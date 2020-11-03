@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SP.Core.ProcessResult;
+using SPTest.UserProcessingService.Api.User.Commands;
 using SPTest.UserReceiverService.Api.Common;
 using SPTest.UserReceiverService.Api.Controllers;
 using SPTest.UserReceiverService.Api.User.DTO;
@@ -18,7 +19,15 @@ namespace SPTest.UserReceiver.Api.Controllers
         public UserController(IMediator mediator) : base(mediator)
         {
         }
-        
+
+        [HttpPost]
+        [ProducesResponseType(typeof(ProcessResult<bool>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ProcessResult<bool>>> OrganizationLink(LinkUserToOrganizationCommand command, CancellationToken token)
+        {
+            return await _mediator.Send(command, token);
+        }
+
         [HttpPost]
         [ProducesResponseType(typeof(ProcessResult<PagedList<UserDTO>>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
