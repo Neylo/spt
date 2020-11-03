@@ -1,0 +1,51 @@
+version: '3.4'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    environment:
+            RABBITMQ_DEFAULT_USER: "guest"
+            RABBITMQ_DEFAULT_PASS: "guest"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+   db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB =sptestdb
+      - POSTGRES_USER =postgres
+      - POSTGRES_PASSWORD = sptest
+    ports:
+      - "5432:5432"
+
+  user-receiver-api:
+    image: mcr.microsoft.com/dotnet/core/aspnet:3.1
+    build:
+      context: .
+      dockerfile: SPTest.UserReceiver.Api/Dockerfile
+    depends_on:
+      - rabbitmq
+      - db
+    ports:
+        - "5001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+
+  user-processing-api:
+      image: mcr.microsoft.com/dotnet/core/aspnet:3.1
+      build:
+        context: .
+        dockerfile: SPTest.UserProcessingService.Api/Dockerfile
+      depends_on:
+        - rabbitmq
+      ports:
+        - "5001:80"
+      environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+
+ 
