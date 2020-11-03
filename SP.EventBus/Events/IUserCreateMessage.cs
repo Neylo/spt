@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SP.EventBus.Events
 {
-    public interface IUserChangeMessage
+    public interface IUserCreateMessage
     {
         Guid Id { get; set; }
         UserDTO User { get; set; }

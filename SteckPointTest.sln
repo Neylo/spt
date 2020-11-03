@@ -5,15 +5,20 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3719E86D-C81F-4F50-B16A-C0F79C3CAB57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPTest.UserReceiverService.Api", "SPTest.UserReceiver.Api\SPTest.UserReceiverService.Api.csproj", "{30BF8513-5B3E-4284-BC70-127D8D4C8CEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPTest.UserReceiverService.Api", "SPTest.UserReceiver.Api\SPTest.UserReceiverService.Api.csproj", "{30BF8513-5B3E-4284-BC70-127D8D4C8CEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPTest.UserProcessingService.Api", "SPTest.UserProcessingService.Api\SPTest.UserProcessingService.Api.csproj", "{1016C36E-356A-42D1-87D7-0C245D5E0D26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPTest.UserProcessingService.Api", "SPTest.UserProcessingService.Api\SPTest.UserProcessingService.Api.csproj", "{1016C36E-356A-42D1-87D7-0C245D5E0D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP.EventBus", "SP.EventBus\SP.EventBus.csproj", "{4B333F9D-DBC1-4D0C-A6E2-6F9F826E8881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SP.EventBus", "SP.EventBus\SP.EventBus.csproj", "{4B333F9D-DBC1-4D0C-A6E2-6F9F826E8881}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{87C8BAC2-95E7-4417-B7A9-A003A6226361}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP.Core", "SP.Core\SP.Core.csproj", "{D799D6C8-D56C-4593-9CFF-38E9C9468ED4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SP.Core", "SP.Core\SP.Core.csproj", "{D799D6C8-D56C-4593-9CFF-38E9C9468ED4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F0FFAF4E-0B93-4692-9EDD-682F2FE636A2}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
