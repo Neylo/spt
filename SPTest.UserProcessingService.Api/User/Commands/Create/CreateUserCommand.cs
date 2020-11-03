@@ -9,6 +9,9 @@ namespace SPTest.UserProcessingService.Api.User.Commands
 {
     public class CreateUserCommand : IRequest<ProcessResult<Guid>>
     {
+        public CreateUserCommand()
+        {
+        }
         public CreateUserCommand(string firstName, string surname, string middleName,string phone, string email)
         {
             FirstName = firstName;

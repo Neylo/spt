@@ -28,8 +28,8 @@ namespace SPTest.UserProcessingService.Api.User.Commands.Create
             var user = _mapper.Map<UserDTO>(request);
             try
             {
-                user.Id = new Guid();
-                var messageId = new Guid();
+                user.Id = Guid.NewGuid();
+                var messageId = Guid.NewGuid();
                 await _eventBus.Publish<IUserCreateMessage>(new UserCreateMessage
                 {
                     Id = messageId,

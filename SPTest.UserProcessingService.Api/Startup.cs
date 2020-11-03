@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AutoMapper;
-using MassTransit;
 using Microsoft.Extensions.Configuration;
-using Serilog;
-using Microsoft.Extensions.Logging;
+using FluentValidation;
 using MediatR;
 using System.Reflection;
 using SPTest.UserProcessingService.Api.Extensions;
@@ -35,6 +29,10 @@ namespace SPTest.UserProcessingService.Api
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.RegisterSerilog();
+
+            services.AddControllers();
+
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +47,8 @@ namespace SPTest.UserProcessingService.Api
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");
